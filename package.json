@@ -1,0 +1,12 @@
+{
+  "name": "chatapp-ws-bridge",
+  "version": "1.0.0",
+  "description": "WebSocket bridge connecting browser to Java chat server",
+  "main": "ws-bridge.js",
+  "scripts": {
+    "start": "node ws-bridge.js"
+  },
+  "dependencies": {
+    "ws": "^8.14.2"
+  }
+}

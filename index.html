@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Connect.ly — Chat</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Top navigation (moved to span full width) -->
+      <div class="top-curves">
+        <div class="curve-left">
+          <button
+            id="toggleSidebar"
+            class="menu-btn"
+            aria-label="Toggle sidebar"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              stroke="#bfe6ff"
+              stroke-width="2"
+            >
+              <path
+                d="M3 6h18M3 12h18M3 18h18"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <img src="connect.ly.png" alt="Connect.ly" class="logo-img" />
+        </div>
+        <div class="header-divider" aria-hidden="true"></div>
+        <div class="curve-right">
+          <div class="username" id="usernameDisplay"></div>
+        </div>
+        <!-- decorative wave at bottom of header -->
+        <svg
+          class="top-wave"
+          viewBox="0 0 1200 80"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <!-- stronger multi-crest wave (more pronounced curves) -->
+          <path
+            d="M0,48 C150,0 300,80 600,48 C900,16 1050,80 1200,48 L1200,80 L0,80 Z"
+            fill="var(--bg)"
+          ></path>
+        </svg>
+      </div>
+
+      <!-- LEFT: sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-top">
+          <!-- Brand shown at top of mobile hamburger -->
+
+          <!-- show username in mobile menu (hidden on desktop) -->
+          <div class="mobile-username" id="mobileUsernameDisplay"></div>
+        </div>
+
+        <div class="chat-list" id="chatList">
+          <!-- Chat items will be populated dynamically from the server (USERS|...)
+             The client requests the user list on connect and updates this element. -->
+        </div>
+
+        <div class="sidebar-bottom">
+          <small class="hint">Drag the divider to resize the list</small>
+        </div>
+      </aside>
+
+      <div class="drag-handle" id="dragHandle" title="Drag to resize"></div>
+
+      <!-- RIGHT: main chat -->
+      <main class="chat-main">
+        <!-- messages -->
+        <section class="messages" id="messages">
+          <!-- messages are injected here dynamically -->
+        </section>
+
+        <!-- message input (Uiverse component, full width) -->
+        <div class="input-wrap">
+          <div class="messageBox">
+            <div class="fileUploadWrapper">
+              <label for="file">
+                <!-- small icon -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 337 337"
+                >
+                  <circle
+                    stroke-width="20"
+                    stroke="#6c6c6c"
+                    fill="none"
+                    r="158.5"
+                    cy="168.5"
+                    cx="168.5"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-width="25"
+                    stroke="#6c6c6c"
+                    d="M167.759 79V259"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-width="25"
+                    stroke="#6c6c6c"
+                    d="M79 167.138H259"
+                  />
+                </svg>
+                <span class="tooltip">Add an image</span>
+              </label>
+              <input type="file" id="file" name="file" />
+            </div>
+
+            <input
+              placeholder="Message..."
+              type="text"
+              id="messageInput"
+              autocomplete="off"
+            />
+
+            <button id="sendButton" aria-label="Send">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 664 663"
+              >
+                <path
+                  fill="none"
+                  d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+                ></path>
+                <path
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                  stroke-width="33.67"
+                  stroke="#6c6c6c"
+                  d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
