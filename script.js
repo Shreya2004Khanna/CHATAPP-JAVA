@@ -55,7 +55,11 @@ updateChatList(["GROUP CHAT"]);
 // WebSocket connection to bridge server
 let ws;
 try {
-  ws = new WebSocket("ws://localhost:8080");
+  ws = new WebSocket(
+  window.location.protocol === "https:"
+    ? "wss://" + window.location.host
+    : "ws://" + window.location.host
+);
 } catch (e) {
   console.error("WebSocket connection failed:", e);
   appendMessage("Failed to connect to server.", "system");
